@@ -6,35 +6,38 @@ output: html_document
 ---
 
 
-```{r echo=FALSE}
-#Show the first few lines of the iris data.
+```{r}
+#Show the first few lines of the iris data frame.
 head(iris)
-#Data needs to be reshaped. I was long and contained Length and Width measurements of for plant parts (Petal & Sepal) as separate columns. Measurement will be merged and plant part information provided as a value in a new column.
-```
+#Data needs reshaping. It is long and contains Length and Width measurements for plant parts (Petal & Sepal) as separate columns. Measurements will be merged and plant part information provided as a value in a new column.
 
-```{r echo=FALSE}
 #load reshape 2 package
 library(reshape2)
-#create a new column that we will need
+#create a new column that we will need to track row associations
 iris$Flower_id <- rownames(iris)
-head(iris)
+head(iris) #you can now see the new column Flower_id
+#melt data(wide to long) to condense the number of columns
 iris_melted <- melt(iris)
-head(iris_melted)
+head(iris_melted) 
+#all measurements are now found in the "value" column with data variables indicated in column "variables"
+
+#strsplit function splits "variable" as character in iris_melted at "."
 split_variable <- strsplit(as.character(iris_melted$variable), split = "\\.")
+#create two new columns and extract each variable that was split
 iris_melted$flower_part <- sapply(split_variable, "[", 1)
 iris_melted$measurement_type <- sapply(split_variable, "[", 2)
+#remove the "variable" column
 iris_melted$variable <- NULL
-head(iris_melted)
+#use dcast(cast for data frame output) to reshape and separate measurement type
 iris_cast <- dcast(iris_melted, formula = Flower_id + Species + flower_part ~ measurement_type)
-head(iris_cast)
+head(iris_cast) #data frame in desired format
 
+#load ggplot2 package and plot data. 
 library(ggplot2)
-ggplot(data=iris_cast, aes(x=Width, y=Length))+ # Add points and use free scales in the facet
-  geom_point()+facet_grid(Species~flower_part, scale="free")+
+ggplot(data=iris_cast, aes(x=Width, y=Length, color = Species))+ # Add points and use free scales in the facet
+geom_point()+facet_grid(Species~flower_part, scale="free")+
   # Add a regression line
   geom_smooth(method="lm")+
   # Use the black/white theme and increase the font size
-  theme_bw(base_size=24)
-
+  theme_bw(base_size=12)
 ```
-
