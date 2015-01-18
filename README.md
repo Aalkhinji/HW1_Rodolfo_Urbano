@@ -5,4 +5,5 @@ This is by first home work assignment for class: Biostatistics 578. The purpose 
 
 2) A new repository was created and named "HW1_Rodolfo_Urbano". Repository was initialized with a README file to explain its content. MIT was selected as a LICENCE. Note: to change the license in the future, create a new file and name it "LICENSE.txt"; an option will appear to select a licence option.
 
-3) In Rstudio, the ggplot2 package was used to plot the Iris data showing length vs width facetting petal/sepal vs flower type. This was basically reproducing slide 27 from the Advanced Graphics Lecture. The plot was customized
+3) In Rstudio, the ggplot2 package was used to plot the Iris data showing length vs width facetting petal/sepal vs flower type. This was basically reproducing slide 27 from the Advanced Graphics Lecture. The plot was customized by decreasing font size and coloring by species. Ideally I would use either the species facet or the coloring scheme, but not both.
+
