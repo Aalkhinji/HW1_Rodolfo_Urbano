@@ -53,7 +53,8 @@ iris_cast <- dcast(iris_melted, formula = Flower_id + Species + flower_part ~ me
 head(iris_cast)
 ```
 
-## Plot iris_cast Width & Length measurements using ggplot2. Facet by species and flower type
+## Plot iris_cast Width & Length measurements using ggplot2
+Facet by species and flower type
 
 
 ```{r}
