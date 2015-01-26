@@ -1,5 +1,10 @@
 # HW1_Rodolfo_Urbano
-This is by first home work assignment for class: Biostatistics 578. The purpose is to create a GitHub account, a repository, and learn how to use it with RStudio.
+
+-Reviewer: Aisha Al-Khinji
+
+-Group 4
+
+This is my first home work assignment for class: Biostatistics 578. The purpose is to create a GitHub account, a repository, and learn how to use it with RStudio.
 
 1) Account was created as "rurbano587" (https://github.com/rurbano587).
 
